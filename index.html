@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Free PDK Documentation | Free PDK</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Free PDK Documentation" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:site_name" content="Free PDK" />
+<script type="application/ld+json">
+{"@type":"WebSite","headline":"Free PDK Documentation","description":"Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.","url":"/","name":"Free PDK","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Free PDK" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">Free PDK</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/tutorial">Tutorial</a></div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+  <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Free PDK Documentation</h1>
+  </header>
+
+  <div class="post-content">
+    <p><em>Free PDK</em> is an open sourced and independently created tool-chain for the <a href="http://www.padauk.com.tw/index_en.aspx">Padauk</a> 8-Bit Microcontrollers, created as an alternative to the proprietary and closed tools provided by the Taiwanese company itself.</p>
+
+<p>This includes the EasyPDKProg µC programmer hardware, adding support for the Padauk µCs to the <a href="http://sdcc.sourceforge.net/">SDCC</a> C-Compiler, as well as comprehensive documentation of the instruction set architecture, and code examples.</p>
+
+<p>The main focus is on supporting µCs of two Padauk series:</p>
+<ul>
+  <li>
+<a href="http://www.padauk.com.tw/en/product/index.aspx?kind=41">M series OTP</a> (OTP = <em>one time programmable</em>)</li>
+  <li>
+<a href="http://www.padauk.com.tw/en/product/index.aspx?kind=42">F series MTP</a> (MTP = <em>multiple time programmable</em>)</li>
+</ul>
+
+<p>Padauk µCs are extremely inexpensive, priced as low as $0.03/pc in volumes of 100, which is why they generated a lot of interest after being featured by
+Dave from the EEVblog (<a href="https://youtu.be/VYhAGnsnO7w">first video</a> and <a href="https://www.youtube.com/watch?v=r45r4rV5JOI&amp;list=PLvOlSehNtuHsiF93KOLoF1KAHArmIW9lC">a bunch of follow-up videos</a>). Despite the low price, it was found that the Padauk µCs sport an interesting architecture that can be a seen as a significant and meaningful extension of the Microchip PIC architecture. There is an extensive and active <a href="http://eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/">discussion on the EEVblog forum</a> for this project and further discussion <a href="https://www.mikrocontroller.net/topic/461002">here</a> on µC.net (German).</p>
+
+<p>This page provides an overview of the different sub-projects created in the <a href="https://github.com/free-pdk">free-pdk</a>
+GitHub organization. It also provides custom pinout diagrams for some of the Padauk µCs.</p>
+
+<h2 id="easy-pdk-programmer">
+<a href="#easy-pdk-programmer"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Easy PDK Programmer</h2>
+
+<p><img src="https://github.com/free-pdk/easy-pdk-programmer-hardware/blob/master/easypdkprogrammer.jpg?raw=true" alt="Image of the Programmer"></p>
+
+<p>Padauk µCs are programmed via a proprietary high-voltage protocol.
+The protocol was reverse engineered and a fully open source programmer that already supports almost two dozen Padauk µCs has been created.
+All sources for the programmer are available at:</p>
+
+<ul>
+  <li><a href="https://github.com/free-pdk/easy-pdk-programmer-hardware">Easy PDK Programmer Hardware</a></li>
+  <li><a href="https://github.com/free-pdk/easy-pdk-programmer-software">Easy PDK Programmer Software</a></li>
+</ul>
+
+<h2 id="sdcc-based-open-source-tool-chain">
+<a href="#sdcc-based-open-source-tool-chain"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> SDCC-based Open Source Tool-Chain</h2>
+
+<p>Padauk’s own tool-chain is based on a custom programming language called “Mini-C” with a syntax based on the C-language. This language is only supported by their own tool-chain, including IDE (“Padauk Developer Studio”) and programmer (“Writer”). The tool-chain also uses a custom binary format with encryption/obfuscation. Should you be interested in code samples in that custom language, take a look at <a href="https://github.com/free-pdk/fppa-code-examples">free-pdk/fppa-code-examples</a>.</p>
+
+<p>The open source tool-chain is based on the Small Device C-Compiler (SDCC) and therefore does support Standard C and common binary output formats (intel hex and bin), including those used by the Easy PDK Programmer.</p>
+
+<p>Please note that right now there is no interchangeability between both tool-chains. Binaries generated by SDCC cannot be written by the official Padauk programmer, but only by the Easy PDK Programmer.</p>
+
+<p>Padauk µCs use different kinds of instruction sets: 13, 14, 15, or 16 bit
+(more information on these instruction sets can be found below).
+Support for the 14 and 15 bit Padauk instruction sets has been added to
+<a href="http://sdcc.sourceforge.net/">SDCC</a>, a C compiler for small devices.
+Support for the 13 bit Padauk instruction set is being worked on.</p>
+
+<p>Helpful SDCC resources:</p>
+<ul>
+  <li><a href="http://sdcc.sourceforge.net/doc/sdccman.pdf">Documentation</a></li>
+  <li><a href="https://sourceforge.net/p/sdcc/bugs/search/?q=_category%3APDK+AND+status%3Aopen">Open bugs in the Padauk integration</a></li>
+  <li><a href="https://sourceforge.net/p/sdcc/feature-requests/search/?q=pdk+AND+status%3Aopen">Feature Requests related to the Padauk integration</a></li>
+</ul>
+
+<h3 id="installing-sdcc">
+<a href="#installing-sdcc"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Installing SDCC</h3>
+
+<p>The latest binaries of SDCC can be obtained on the <a href="http://sdcc.sourceforge.net/">SDCC website</a>. Please note that the version that comes with your operating system’s package manager is likely outdated and may not have support or only limited support for the Padauk µCs.</p>
+
+<h2 id="µc-specific-information-and-pinouts">
+<a href="#%C2%B5c-specific-information-and-pinouts"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> µC-specific Information and Pinouts</h2>
+
+<p>Note: Other µCs than the µCs listed here may be supported.
+If you want to learn more about the naming scheme, <a href="/chips/#naming-scheme">read more here</a>.</p>
+
+<h3 id="mtp-flash-variants">
+<a href="#mtp-flash-variants"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> MTP (Flash) Variants</h3>
+
+<div class="table-responsive">
+    <table>
+    <thead>
+        <tr class="header">
+            <th>MCU</th>
+            <th>OSS Status</th>
+            <th>Arch.</th>
+            <th>max IO</th>
+            <th>ROM</th>
+            <th>RAM</th>
+            <th>Timers</th>
+            <th>PWM</th>
+            <th>CMP</th>
+            <th>ADC</th>
+            <th>Special</th>
+            <th>Padauk Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS154">PFS154</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=66&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="http://www.padauk.com.tw/upload/doc/PFS154%20datasheet_v105_EN_20200609.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS172">PFS172</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td></td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=108&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="http://www.padauk.com.tw/upload/doc/PFS172%20datasheet_v001_EN_20200506.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS173">PFS173</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK15">PDK15</a></td>
+                    <td>18</td>
+                    <td>
+<p>3 KW</p>
+</td>
+                    <td>256</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=90&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="http://www.padauk.com.tw/upload/doc/PFS173%20datasheet_v105_EN_20200619.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<h3 id="otp-variants">
+<a href="#otp-variants"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> OTP Variants</h3>
+
+<div class="table-responsive">
+    <table>
+    <thead>
+        <tr class="header">
+            <th>MCU</th>
+            <th>OSS Status</th>
+            <th>Arch.</th>
+            <th>max IO</th>
+            <th>ROM</th>
+            <th>RAM</th>
+            <th>Timers</th>
+            <th>PWM</th>
+            <th>CMP</th>
+            <th>ADC</th>
+            <th>Special</th>
+            <th>Padauk Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS150C">PMS150C</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK13">PDK13</a></td>
+                    <td>6</td>
+                    <td>
+<p>1 KW</p>
+</td>
+                    <td>64</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=4&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="http://www.padauk.com.tw/upload/doc/PMS15A,PMS150C%20datasheet%20V107_EN_20191017.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+<tr>
+                    <td><strong><a href="/chips/PMS15A">PMS15A</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK13">PDK13</a></td>
+                    <td>6</td>
+                    <td>
+<p>0.5 KW<br> <a href="/chips/PMS15A">(1 KW *)</a></p>
+</td>
+                    <td>64</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=105&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="http://www.padauk.com.tw/upload/doc/PMS15A,PMS150C%20datasheet%20V107_EN_20191017.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS152">PMS152</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>1.25 KW</p>
+</td>
+                    <td>80</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=7&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="http://www.padauk.com.tw/upload/doc/PMS152_datasheet_v105_EN_20200609.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS154C">PMS154C</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=14&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="http://www.padauk.com.tw/upload/doc/PMS154C%20datasheet_v105_EN_20200609.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS171B">PMS171B</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>1.5 KW</p>
+</td>
+                    <td>96</td>
+                    <td>T16<br> T2 T3</td>
+                    <td>2x 8‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=96&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="http://www.padauk.com.tw/upload/doc/PMS171B_datasheet_EN_v102_20191021.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<h2 id="evaluation-boards">
+<a href="#evaluation-boards"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Evaluation Boards</h2>
+
+<p>These are evaluation boards for the online-programmable MTP (as opposed to the OTP parts, which can only be programmed offline and once) Padauk µC.
+<a href="https://github.com/free-pdk/f-eval-boards">free-pdk/f-eval-boards</a>.</p>
+
+<h2 id="instruction-sets-opcodes-and-programming-sequence">
+<a href="#instruction-sets-opcodes-and-programming-sequence"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Instruction Sets, Opcodes, and Programming Sequence</h2>
+
+<p>The different Padauk µCs use either 13, 14, 15, or 16 bit instruction sets.
+The following files provide an overview over the different instruction sets.</p>
+
+<ul>
+  <li><a href="/instruction-sets/PDK13">PDK13</a></li>
+  <li><a href="/instruction-sets/PDK14">PDK14</a></li>
+  <li><a href="/instruction-sets/PDK15">PDK15</a></li>
+  <li><a href="/instruction-sets/PDK16">PDK16</a></li>
+</ul>
+
+<p>More information, including information on the programming sequence, can be found at
+  <a href="https://github.com/free-pdk/fppa-pdk-documentation">free-pdk/fppa-pdk-documentation</a></p>
+
+<h2 id="other-tools">
+<a href="#other-tools"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Other Tools</h2>
+
+<ul>
+  <li>
+<strong>Circuit Symbols for gEDA gschem</strong>:
+A collection of circuit symbols for many of the Padauk µCs.
+<a href="https://github.com/free-pdk/pdk-gschem-symbols">free-pdk/pdk-gschem-symbols</a>.</li>
+  <li>
+<strong>Padauk µC Emulator written in VHDL</strong>:
+This project aims to provide a fully functional, timing accurate VHDL model for simulating PADAUK FPPA microcontrollers.
+<a href="https://github.com/free-pdk/fppa-pdk-emulator-vhdl">free-pdk/fppa-pdk-emulator-vhdl</a>
+</li>
+  <li>A bunch more tools are located at
+<a href="https://github.com/free-pdk/fppa-pdk-tools">free-pdk/fppa-pdk-tools</a>.
+    <ul>
+      <li>
+<strong>Disassembler</strong>: dispdk supports 13 bit, 14 bit, 15 bit and 16 bit opcodes</li>
+      <li>
+<strong>Emulator</strong>: emupdk supports 14 bit opcodes, no peripheral support yet requires mapping of processor ID in emucpu.c</li>
+      <li>
+<strong>PDK converter</strong>: depdk convert/deobfuscate any PDK file to binary</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="projects-from-the-community">
+<a href="#projects-from-the-community"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Projects from the Community</h2>
+
+<p>These projects are auto-populated once per day by
+<a href="https://github.com/search?q=topic%3Apadauk%20archived%3Afalse%20sort%3Aupdated%20-repo%3Akaiz16%2Fzg-xkb">searching GitHub for repositories with the <code class="language-plaintext highlighter-rouge">padauk</code> tag</a>.</p>
+
+<div class="community-projects">
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/free-pdk-examples">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>free-pdk-examples</strong>
+    </h4>
+    <p>
+      Code Examples for Padauk MCUs using the free-pdk/SDCC toolchain
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated yesterday
+      
+        · 1 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/pdk-includes">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>pdk-includes</strong>
+    </h4>
+    <p>
+      Device Include files for Padauk MCUs
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated yesterday
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/easy-pdk-programmer-software">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>easy-pdk-programmer-software</strong>
+    </h4>
+    <p>
+      Easy PDK programmer for PADAUK microcontroller
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated yesterday
+      
+        · 58 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/cmfcmf/ic-pinout-diagram-generator">
+    <h4>
+      <span class="owner">cmfcmf</span>
+      <br>
+      <strong>ic-pinout-diagram-generator</strong>
+    </h4>
+    <p>
+      Generate beautiful pinout diagrams for integrated circuits.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 2 days ago
+      
+        · 4 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/benlhy/Padauk">
+    <h4>
+      <span class="owner">benlhy</span>
+      <br>
+      <strong>Padauk</strong>
+    </h4>
+    <p>
+      Example code for Padauk Microcontrollers.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 3 days ago
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/easy-pdk-showcase-projects">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>easy-pdk-showcase-projects</strong>
+    </h4>
+    <p>
+      Complete showcase projects for PADAUK MCUs using only free and open source tools like the SDCC compiler and the Easy-PDK-Programmer.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 4 days ago
+      
+        · 2 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/LovelyA72/EZPDK8">
+    <h4>
+      <span class="owner">LovelyA72</span>
+      <br>
+      <strong>EZPDK8</strong>
+    </h4>
+    <p>
+      Minimalist 8 pin Padauk MCU breakout board with pin labelled and a sharpie field
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 6 days ago
+      
+        · 1 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/serisman/pdk-device-json">
+    <h4>
+      <span class="owner">serisman</span>
+      <br>
+      <strong>pdk-device-json</strong>
+    </h4>
+    <p>
+      .json files describing Padauk microcontrollers, generated from Padauk IDE .INC files.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 1 week ago
+      
+        · 1 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/serisman/Padauk">
+    <h4>
+      <span class="owner">serisman</span>
+      <br>
+      <strong>Padauk</strong>
+    </h4>
+    <p>
+      A toolchain and library with example projects for the ultra cheap Padauk MCUs
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 1 week ago
+      
+        · 1 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/kaweksl/pdk-codebucket">
+    <h4>
+      <span class="owner">kaweksl</span>
+      <br>
+      <strong>pdk-codebucket</strong>
+    </h4>
+    <p>
+      Some code for Padauk uC's , mostly using I2C slave
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 1 week ago
+      
+        · 1 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/cpldcpu/SimPad">
+    <h4>
+      <span class="owner">cpldcpu</span>
+      <br>
+      <strong>SimPad</strong>
+    </h4>
+    <p>
+      Work towards an open source programmer for Padauk MCUs
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 2 weeks ago
+      
+        · 47 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/pacmancoder/vpadauk">
+    <h4>
+      <span class="owner">pacmancoder</span>
+      <br>
+      <strong>vpadauk</strong>
+    </h4>
+    <p>
+      Padauk mcu emulator
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 1 month ago
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/fppa-pdk-emulator-vhdl">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>fppa-pdk-emulator-vhdl</strong>
+    </h4>
+    <p>
+      VHDL simulation model for PADAUK PDK microcontrollers 
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 1 month ago
+      
+        · 12 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/kenyapcomau/codeblocks-wizard-pdk">
+    <h4>
+      <span class="owner">kenyapcomau</span>
+      <br>
+      <strong>codeblocks-wizard-pdk</strong>
+    </h4>
+    <p>
+      Wizard directory for Padauk projects using SDCC for the code::blocks IDE
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 1 month ago
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/easy-pdk-programmer-hardware">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>easy-pdk-programmer-hardware</strong>
+    </h4>
+    <p>
+      Easy PDK programmer for PADAUK microcontroller. EDA, schematic, gerber, bom, housing stl, firmware
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 2 months ago
+      
+        · 106 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/fppa-pdk-tools">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>fppa-pdk-tools</strong>
+    </h4>
+    <p>
+      PDK FPPA disassembler, simulator, ... 
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 7 months ago
+      
+        · 33 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+<div>
+  <a class="card" href="https://github.com/socram8888/ArduinoPFSProgrammer">
+    <h4>
+      <span class="owner">socram8888</span>
+      <br>
+      <strong>ArduinoPFSProgrammer</strong>
+    </h4>
+    <p>
+      Arduino-based programmer for Padauk PFS-series microcontrollers
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated 9 months ago
+      
+    </div>
+  </a>
+</div>
+
+</div>
+
+<h2 id="latest-activity">
+<a href="#latest-activity"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Latest Activity</h2>
+
+<p>The latest activity in the <code class="language-plaintext highlighter-rouge">free-pdk</code> GitHub organization is fetched at least once per day and displayed below.</p>
+
+<div class="card github-activity">
+  
+  
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk-examples">free-pdk/free-pdk-examples</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk-examples/commit/ba72094bceeabcded90ede687b4b3f0449d49485">ba72094</a>
+                Pull in upstream changes
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> commented on issue
+          <a href="https://github.com/free-pdk/free-pdk.github.io/issues/38">free-pdk/free-pdk.github.io#38</a>
+          <br>
+          <strong>
+            Sorry for hickup with merges
+          </strong>
+          <br>
+          That's a good idea, indeed. I am still quite confused how this happened. It seems like the head was merged into a minor change of mine after rebasing everything to the state of my repository.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/2145092?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/cmfcmf" class="user-mention">@cmfcmf</a> commented on issue
+          <a href="https://github.com/free-pdk/free-pdk.github.io/issues/38">free-pdk/free-pdk.github.io#38</a>
+          <br>
+          <strong>
+            Sorry for hickup with merges
+          </strong>
+          <br>
+          You are probably looking for this: https://code.visualstudio.com/updates/v1_28#_always-rebase-when-running-sync
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk.github.io">free-pdk/free-pdk.github.io</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk.github.io/commit/5d590e927a4ffba1c081304b06c8bae7241c5970">5d590e9</a>
+                Revert "Revert "Merge branch 'production' of https://github.com/free-pdk/free-pdk.github.io into production""<br>
+<br>
+This reverts commit bfeefd9d65e604f0e9d764b7fb6a4f634f821dd7.
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk.github.io">free-pdk/free-pdk.github.io</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk.github.io/commit/bfeefd9d65e604f0e9d764b7fb6a4f634f821dd7">bfeefd9</a>
+                Revert "Merge branch 'production' of https://github.com/free-pdk/free-pdk.github.io into production"<br>
+<br>
+This reverts commit d340ca1ec6b8140a990e964aae37da9c7b277cc0, reversing<br>
+changes made to 60d9e66bde121bbc65cab723fc9ff4149b39091b.
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk.github.io">free-pdk/free-pdk.github.io</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk.github.io/commit/0cce27f29f0fc78cd45db78113b1c05e90aa3fca">0cce27f</a>
+                Merge pull request #27 from free-pdk/development<br>
+<br>
+Development
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk.github.io/commit/60d9e66bde121bbc65cab723fc9ff4149b39091b">60d9e66</a>
+                Merge pull request #33 from free-pdk/development
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk.github.io/commit/d340ca1ec6b8140a990e964aae37da9c7b277cc0">d340ca1</a>
+                Merge branch 'production' of https://github.com/free-pdk/free-pdk.github.io into production
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-includes/issues/1">free-pdk/easy-pdk-includes#1</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          Copyright and LICENSE information was merged via pull request #3
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/7f66037d446879edc7ce9ee016fd72d05370d889">7f66037</a>
+                Create LICENSE
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/4500fd1c28126b5fd682a83bde215fb705523eb7">4500fd1</a>
+                Add Copyright and LICENSE information
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/f55fef2371385773fcbac1e548fe2ec16fc38d77">f55fef2</a>
+                Update README.md
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/4b4d00a1b5cf8496167609252d08baf83b0e9c4b">4b4d00a</a>
+                Sync with master
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/e7e040bab56388f29b0fd6d639e9a63d4cddb165">e7e040b</a>
+                Merge branch 'master' into feature/add-license
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/c4fe878ebbb1e7f89eaaef62b8e8431783919a73">c4fe878</a>
+                Merge branch 'master' into feature/add-license
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/3ccaf890816806003f0a534b245a240aae58772b">3ccaf89</a>
+                Merge pull request #3 from free-pdk/feature/add-license<br>
+<br>
+Add Copyright and LICENSE information
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/pdk-includes/issues/5">free-pdk/pdk-includes#5</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          Copyright and LICENSE information was merged via Pull Request #7
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/c2da87e18ca015f7dd9df832f457d7a88b961d81">c2da87e</a>
+                Create LICENSE
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/a234380695f7574bab40d0e641f7270679a84d7b">a234380</a>
+                Add Copyright and LICENSE information
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/eead3cf0e5c9f5daf7ca43ee796507c6c7a796ff">eead3cf</a>
+                Sync with master
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/c9f209f23b5124d4abddb12778f596228b761be4">c9f209f</a>
+                Merge branch 'master' into feature/add-license
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/6417af6b35341b6436a48dbb2730f5ffe1f41e6f">6417af6</a>
+                Merge pull request #7 from free-pdk/feature/add-license<br>
+<br>
+Add Copyright and LICENSE information
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/26331898?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/Bingo600" class="user-mention">@Bingo600</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/issues/45">free-pdk/easy-pdk-programmer-software#45</a>
+          <br>
+          <strong>
+            Include git rev/branch in version output
+          </strong>
+          <br>
+          <a href="https://github.com/JS" class="user-mention">@JS</a>
+<br>
+
+<br>
+Beautifull 
+<br>
+
+<br>
+$ easypdkprog -V
+<br>
+easypdkprog 1.3-10-gc5fabd3
+<br>
+
+<br>
+$ easypdkprog probe --verbose
+<br>
+Searching programmer... found: /dev/ttyACM3
+<br>
+FREE-PDK EASY PROG - HW:1.2 SW:1.3 PROTO:1.3 (1.3-10-gc5fabd3)
+<br>
+Probing IC... found.
+<br>
+TYPE:FLASH RSP:0x1AA1 VPP=4.50 VDD=2.00
+<br>
+IC is supported: PFS154 ICID:0xAA1
+<br>
+
+<br>
+I would say this one can be closed with success - elegant
+<br>
+
+<br>
+Who does that ??
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk.github.io">free-pdk/free-pdk.github.io</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk.github.io/commit/0a986169480e10da7307d3efbb1ef3cd83477bc8">0a98616</a>
+                Update index.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> commented on issue
+          <a href="https://github.com/free-pdk/pdk-includes/issues/5">free-pdk/pdk-includes#5</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          For more details on a GPL+LE, see e.g.:
+<br>
+
+<br>
+https://www.gnu.org/licenses/gcc-exception-3.1.en.html
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/ccac5cc9fd1a9e633c4a4a7ad3080464bedd0649">ccac5cc</a>
+                PIN definitions -&gt; BIT definitions
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/ccac5cc9fd1a9e633c4a4a7ad3080464bedd0649">ccac5cc</a>
+                PIN definitions -&gt; BIT definitions
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/c9f209f23b5124d4abddb12778f596228b761be4">c9f209f</a>
+                Merge branch 'master' into feature/add-license
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/free-pdk-examples/issues/4">free-pdk/free-pdk-examples#4</a>
+          <br>
+          <strong>
+            Remove the notes about using development version of Easy PDK Programmer
+          </strong>
+          <br>
+          Fixed via commit: https://github.com/free-pdk/free-pdk-examples/commit/227fc3df1192feafe60918283b111f07c6329d30
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk-examples">free-pdk/free-pdk-examples</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk-examples/commit/227fc3df1192feafe60918283b111f07c6329d30">227fc3d</a>
+                Update README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/76d1a4ddf04e77d7b6a6276caa0289e8261ccd5b">76d1a4d</a>
+                Update README.md
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/c4fe878ebbb1e7f89eaaef62b8e8431783919a73">c4fe878</a>
+                Merge branch 'master' into feature/add-license
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/76d1a4ddf04e77d7b6a6276caa0289e8261ccd5b">76d1a4d</a>
+                Update README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/b981c52fdd5b6eb5ed62f2d480e0c6ce29847325">b981c52</a>
+                Update README.md
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/142ff80a31bee62dff044a7c81eb27212eb3ad83">142ff80</a>
+                Sort devices alphabetically
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/eead3cf0e5c9f5daf7ca43ee796507c6c7a796ff">eead3cf</a>
+                Sync with master
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/142ff80a31bee62dff044a7c81eb27212eb3ad83">142ff80</a>
+                Sort devices alphabetically
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/7903503458555d9798a6d408322f50b786926eb1">7903503</a>
+                Update README.md
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/e7e040bab56388f29b0fd6d639e9a63d4cddb165">e7e040b</a>
+                Merge branch 'master' into feature/add-license
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/b981c52fdd5b6eb5ed62f2d480e0c6ce29847325">b981c52</a>
+                Update README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/7903503458555d9798a6d408322f50b786926eb1">7903503</a>
+                Update README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/cd0502d6391e8598b746be9ec9baf6dddcc92a86">cd0502d</a>
+                Update comments and README.md
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/4b4d00a1b5cf8496167609252d08baf83b0e9c4b">4b4d00a</a>
+                Sync with master
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/cd0502d6391e8598b746be9ec9baf6dddcc92a86">cd0502d</a>
+                Update comments and README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/pdk-includes/issues/5">free-pdk/pdk-includes#5</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          Ok, here is a different PR with GPL v2 with Linking Exception: https://github.com/free-pdk/pdk-includes/pull/7
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on pull request
+          <a href="https://github.com/free-pdk/pdk-includes/pull/7">free-pdk/pdk-includes#7</a>
+          <br>
+          <strong>
+            Add Copyright and LICENSE information
+          </strong>
+          <br>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> - Please review and indicate your acceptance of the Copyright and License for this repo.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/a234380695f7574bab40d0e641f7270679a84d7b">a234380</a>
+                Add Copyright and LICENSE information
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/f55fef2371385773fcbac1e548fe2ec16fc38d77">f55fef2</a>
+                Update README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-includes/issues/1">free-pdk/easy-pdk-includes#1</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          Ok, here is a different PR with GPL v2 with Linking Exception: https://github.com/free-pdk/easy-pdk-includes/pull/3
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on pull request
+          <a href="https://github.com/free-pdk/easy-pdk-includes/pull/3">free-pdk/easy-pdk-includes#3</a>
+          <br>
+          <strong>
+            Add Copyright and LICENSE information
+          </strong>
+          <br>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> - Please review and indicate your acceptance of the Copyright and License for this repo.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/4500fd1c28126b5fd682a83bde215fb705523eb7">4500fd1</a>
+                Add Copyright and LICENSE information
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/c5fabd38ae481019a5433ee66ba02628519672a6">c5fabd3</a>
+                fix undefined case for firmware version
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-includes/issues/1">free-pdk/easy-pdk-includes#1</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          &gt; &gt; I'm not sure if the old LGPL is the right choice for headers which are included in a linked program.
+<br>
+&gt; &gt; I think GPL + LinkException is a better choice for this.
+<br>
+&gt; 
+<br>
+&gt; Do you have a link that shows that as being a real thing?
+<br>
+&gt; 
+<br>
+&gt; I couldn't find it on http://www.gnu.org/licenses, and it isn't directly listed on their exceptions page either: https://www.gnu.org/licenses/exceptions.html
+<br>
+&gt; 
+<br>
+&gt; GitHub doesn't know about it: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository
+<br>
+&gt; 
+<br>
+&gt; SPDX doesn't directly list it (unless it is one of the deprecated ones): https://spdx.org/licenses/
+<br>
+&gt; 
+<br>
+&gt; Wikipedia isn't really all that clear, although they do list LGPL as being related: https://en.wikipedia.org/wiki/GPL_linking_exception
+<br>
+&gt; 
+<br>
+&gt; Or, do we just list this as GPL 2.0 and include our own exception text (similar to what SDCC uses)? That feels a bit dirty to not use an 'official' license, but maybe it is ok?
+<br>
+
+<br>
+But you use an official license. You just add an additional exception.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-includes/issues/1">free-pdk/easy-pdk-includes#1</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          https://en.wikipedia.org/wiki/GPL_linking_exception
+<br>
+
+<br>
+In SDCC I only found this:
+<br>
+https://sourceforge.net/p/sdcc/code/HEAD/tree/trunk/sdcc/doc/README.txt
+<br>
+https://sourceforge.net/p/sdcc/code/HEAD/tree/trunk/sdcc/COPYING
+<br>
+
+<br>
+=&gt; we need to ask <a href="https://github.com/spth" class="user-mention">@spth</a> 
+<br>
+
+<br>
+Linking Excpetion:
+<br>
+You might put the repo under GPL LICENSE and then add a "LICENSE-ADDITIONAL" containing the linking exception.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/pdk-includes/issues/5">free-pdk/pdk-includes#5</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          &gt; SDCC suggested GPL + LinkExcpetion. LGPL is a bit different.
+<br>
+
+<br>
+Yeah, I couldn't really find that as an 'official' license.  Do you have a link that shows that as being a real thing?
+<br>
+
+<br>
+I couldn't find it on http://www.gnu.org/licenses, and it isn't directly listed on their exceptions page either: https://www.gnu.org/licenses/exceptions.html
+<br>
+
+<br>
+GitHub doesn't know about it: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository
+<br>
+
+<br>
+SPDX doesn't directly list it (unless it is one of the deprecated ones): https://spdx.org/licenses/
+<br>
+
+<br>
+Wikipedia isn't really all that clear, although they do list LGPL as being related: https://en.wikipedia.org/wiki/GPL_linking_exception
+<br>
+
+<br>
+Or, do we just list this as GPL 2.0 and include our own exception text (similar to what SDCC uses)? That feels a bit dirty to not use an 'official' license, but maybe it is ok?
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-includes/issues/1">free-pdk/easy-pdk-includes#1</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          &gt; I'm not sure if the old LGPL is the right choice for headers which are included in a linked program.
+<br>
+&gt; 
+<br>
+&gt; I think GPL + LinkException is a better choice for this.
+<br>
+
+<br>
+Do you have a link that shows that as being a real thing?
+<br>
+
+<br>
+I couldn't find it on http://www.gnu.org/licenses, and it isn't directly listed on their exceptions page either: https://www.gnu.org/licenses/exceptions.html
+<br>
+
+<br>
+GitHub doesn't know about it: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository
+<br>
+
+<br>
+SPDX doesn't directly list it (unless it is one of the deprecated ones): https://spdx.org/licenses/
+<br>
+
+<br>
+Wikipedia isn't really all that clear, although they do list LGPL as being related: https://en.wikipedia.org/wiki/GPL_linking_exception
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/pdk-includes/issues/5">free-pdk/pdk-includes#5</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          SDCC suggested GPL + LinkExcpetion. LGPL is a bit different.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-includes/issues/1">free-pdk/easy-pdk-includes#1</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          I'm not sure if the old LGPL is the right choice for headers which are included in a linked program.
+<br>
+
+<br>
+I think GPL + LinkException is a better choice for this.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/3680aecd846c086f349898c7002fdb3c2d8666d8">3680aec</a>
+                use newer dist for autobuild of firmware
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-includes/issues/1">free-pdk/easy-pdk-includes#1</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          Pull Request adding Copyright and LICENSE information: https://github.com/free-pdk/easy-pdk-includes/pull/2
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on pull request
+          <a href="https://github.com/free-pdk/easy-pdk-includes/pull/2">free-pdk/easy-pdk-includes#2</a>
+          <br>
+          <strong>
+            Add Copyright and LICENSE information
+          </strong>
+          <br>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> - Please review and indicate your acceptance of the Copyright and License for this repo.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-includes">free-pdk/easy-pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-includes/commit/2f44b51c9ee41f322212e8480bd3fde89053c6aa">2f44b51</a>
+                Add Copyright and LICENSE information
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/pdk-includes/issues/5">free-pdk/pdk-includes#5</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          Pull Request to add Copyright and License information: https://github.com/free-pdk/pdk-includes/pull/6
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on pull request
+          <a href="https://github.com/free-pdk/pdk-includes/pull/6">free-pdk/pdk-includes#6</a>
+          <br>
+          <strong>
+            Add Copyright and LICENSE information
+          </strong>
+          <br>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> - Please review and indicate your acceptance of the Copyright and License for this repo.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/adb9b19862ed1124ea7f2c26482b677b068cbe49">adb9b19</a>
+                remove compiled firmware and add note where to find in future or to compile it
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/f6d3609580ae35e773e4e0b0bd9070ba453933a6">f6d3609</a>
+                Update README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/f4674a7f2b068f15fda6381aa65dc9426503dac0">f4674a7</a>
+                Update README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/64ffcbcdb0494522b051d6695d1f7f4e73da7b1c">64ffcbc</a>
+                Update README.md
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> pushed to <a href="https://api.github.com/repos/free-pdk/pdk-includes">free-pdk/pdk-includes</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/pdk-includes/commit/9d8e3fa21c322b36666ef9654e2697bfbdd530d7">9d8e3fa</a>
+                Add Copyright and LICENSE information
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/issues/45">free-pdk/easy-pdk-programmer-software#45</a>
+          <br>
+          <strong>
+            Include git rev/branch in version output
+          </strong>
+          <br>
+          Firmware autobuild and git tag/version in programmer firmware is working now (see commit 6c348f81b5bd57d0a19a159316458de59c6f1421)
+<br>
+
+<br>
+
+<br>
+<a href="https://github.com/kaweksl" class="user-mention">@kaweksl</a> 
+<br>
+&gt; -v arg should print also firmware/protocol version if connected, also printing firmware branch could be useful.
+<br>
+&gt; Currently firmware version is printed when issuing for example
+<br>
+&gt; `easypdkprog --verbose probe`
+<br>
+&gt; but that is not obvious
+<br>
+
+<br>
+-V prints the version of the host program. It is not intended to connect somewhere (USB) and get version numbers of remote systems.
+<br>
+
+<br>
+Maybe need to add extra command like "test" or "version" (instead of "--verbose probe") ?
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/6c348f81b5bd57d0a19a159316458de59c6f1421">6c348f8</a>
+                add tag/version from git to programer firmware and use autobuild to create firmware
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/c7e643415e2541871d9b542914e9fbe5af05e478">c7e6434</a>
+                add firmware build to travis
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/40817c8d7b1891f646a22175430351fc6e760214">40817c8</a>
+                add firmware build to travis
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/6f05d48edcf2ec387e3e052e037fc483af875c2e">6f05d48</a>
+                fix compiler setting for standard (gnu99)
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/275909d7679fb4c3d0594423bac3c45fb0e84bbb">275909d</a>
+                add firmware build to travis
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/free-pdk-examples/issues/3">free-pdk/free-pdk-examples#3</a>
+          <br>
+          <strong>
+            Still missing LICENSE 
+          </strong>
+          <br>
+          &gt; It might be more important on the pdk-includes repo, because that is more likely to be needed by and included into other projects. I don't like forcing people to license their projects as GPL (or even sharing them back) just because they use the common device include files. But, as Philipp mentioned on one of the other repos, we may have to stick with GPL2+LE anyway in order to be considered for inclusion in SDCC. We can address this on that repo.
+<br>
+
+<br>
+I fully agree to use the SDCC compatible license (GPL2+LE) for all of the header files which are supposed to be merged to SDCC.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-includes/issues/1">free-pdk/easy-pdk-includes#1</a>
+          <br>
+          <strong>
+            Add LICENSE
+          </strong>
+          <br>
+          &gt; SDCC uses GPL2+LE (i.e, GPL 2 or later with liking exception) for its library.
+<br>
+&gt; Whatever is chosen should be compatible with that, at least for the part that is supposed to go into SDCC later.
+<br>
+
+<br>
+This repo is the programmer specific include files (i.e. calibration routines) and is not currently intended to be included with SDCC.  But, your comment would apply to the pdk-includes repo: https://github.com/free-pdk/pdk-includes/issues/5
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/670207?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/serisman" class="user-mention">@serisman</a> commented on issue
+          <a href="https://github.com/free-pdk/free-pdk-examples/issues/3">free-pdk/free-pdk-examples#3</a>
+          <br>
+          <strong>
+            Still missing LICENSE 
+          </strong>
+          <br>
+          Well, I am not particularly interested in (or qualified for) an extended discussion on this.
+<br>
+
+<br>
+If you feel strongly that GPL is the way to go, I'm fine with that, and can keep my preferences to myself.
+<br>
+
+<br>
+I don't see a big difference on a repo like this one anyway.
+<br>
+
+<br>
+It might be more important on the pdk-includes repo, because that is more likely to be needed by and included into other projects.  I don't like forcing people to license their projects as GPL (or even sharing them back) just because they use the common device include files.  But, as Philipp mentioned on one of the other repos, we may have to stick with GPL2+LE anyway in order to be considered for inclusion in SDCC.  We can address this on that repo.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/issues/45">free-pdk/easy-pdk-programmer-software#45</a>
+          <br>
+          <strong>
+            Include git rev/branch in version output
+          </strong>
+          <br>
+          <a href="https://github.com/Bingo600" class="user-mention">@Bingo600</a> 
+<br>
+You don't have to use travis... Travis is used to automatically build the releases (compiled versions of the project):
+<br>
+https://github.com/free-pdk/easy-pdk-programmer-software/releases
+<br>
+
+<br>
+Many people do not want to compile easypdkprog (especially Windows users) so the releases are a convenient way for them.
+<br>
+
+<br>
+Your workflow - checkout master, compile yourself would indeed work without any problem. Just for the autobuild I need to add the firmware build.
+<br>
+
+<br>
+This is not a hard task, it just needs some time. I also need to find a way not to install the arm tools and compile the firmware 3 times for the 3 releases Linux/MacOS/Windows.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/2145092?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/cmfcmf" class="user-mention">@cmfcmf</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk.github.io">free-pdk/free-pdk.github.io</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk.github.io/commit/d9123bd6f38a4fd61ecbb688589e40f01ef00fb2">d9123bd</a>
+                Add a table of contents
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/26331898?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/Bingo600" class="user-mention">@Bingo600</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/issues/45">free-pdk/easy-pdk-programmer-software#45</a>
+          <br>
+          <strong>
+            Include git rev/branch in version output
+          </strong>
+          <br>
+          I think this is "Over my head" ... As in i have never used travis
+<br>
+If you add a new version , i do a git pull , makes easypdkprog , and a new firmware on my local machine.
+<br>
+
+<br>
+But that is not what you meant by the above , i'm sure.
+<br>
+
+<br>
+/Bingo
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/issues/45">free-pdk/easy-pdk-programmer-software#45</a>
+          <br>
+          <strong>
+            Include git rev/branch in version output
+          </strong>
+          <br>
+          <a href="https://github.com/Bingo600" class="user-mention">@Bingo600</a> 
+<br>
+
+<br>
+The problem is not adding it to the Makefile. The problem is to add the correct tag to the autobuild process.
+<br>
+
+<br>
+Right now when you create a tag on master the travis autobuild uses this tag to include it into the release.
+<br>
+Since the firmware is not built with the autobuild right now there is no way to add the tag.
+<br>
+
+<br>
+Example:
+<br>
+In future new master version is pushed and new tag 1.4 is added.
+<br>
+Then travis autobuild just compiles easypdkprog and creates the release
+<br>
+=&gt; problem: firmware does not have new tag. Any previous (by hand) compiled firmware will have the old tag since the new tag is the trigger for autobuild.
+<br>
+
+<br>
+=&gt; solution: I need to add the firmware build to travis. this requires to add the arm build tools to the travis VM build process...
+<br>
+
+<br>
+Have a look at ".travis.yml" and ".travis-build.sh".
+<br>
+
+<br>
+And in case you did not have noticed there is a "build passed" badge on github. When you click on it you see the last autobuild: https://travis-ci.org/github/free-pdk/easy-pdk-programmer-software
+<br>
+and if you click on "Build History" there you see all autobuilds done: https://travis-ci.org/github/free-pdk/easy-pdk-programmer-software
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/26331898?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/Bingo600" class="user-mention">@Bingo600</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/issues/45">free-pdk/easy-pdk-programmer-software#45</a>
+          <br>
+          <strong>
+            Include git rev/branch in version output
+          </strong>
+          <br>
+          Could this work ?
+<br>
+
+<br>
+`$ cat fw-vers-patch 
+<br>
+diff --git a/Firmware/source/Makefile b/Firmware/source/Makefile
+<br>
+index 89bfba2..329f97d 100644
+<br>
+--- a/Firmware/source/Makefile
+<br>
++++ b/Firmware/source/Makefile
+<br>
+@@ -1,6 +1,8 @@
+<br>
+ #GCC_PATH = ../../../../gcc-arm-none-eabi-9-2019-q4-major/bin
+<br>
+ BUILD_DIR = build
+<br>
+ 
+<br>
++EPDKVER ?= $(shell git describe --dirty)
+<br>
++
+<br>
+ TARGET = EASYPDKPROG
+<br>
+ 
+<br>
+ # debug build?
+<br>
+@@ -125,7 +127,7 @@ endif
+<br>
+ # compile gcc flags
+<br>
+ ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+<br>
+ 
+<br>
+-CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+<br>
++CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -D__FPDKSW__=\"$(EPDKVER)\" -Wall -fdata-sections -ffunction-sections
+<br>
+ 
+<br>
+ ifeq ($(DEBUG), 1)
+<br>
+ CFLAGS += -g -gdwarf-2
+<br>
+diff --git a/Firmware/source/Src/fpdk.h b/Firmware/source/Src/fpdk.h
+<br>
+index 4c2be8b..11af2b8 100644
+<br>
+--- a/Firmware/source/Src/fpdk.h
+<br>
++++ b/Firmware/source/Src/fpdk.h
+<br>
+@@ -21,7 +21,9 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+<br>
+ #include &lt;stdbool.h&gt;
+<br>
+ #include &lt;stdint.h&gt;
+<br>
+ 
+<br>
+-#define __FPDKSW__ "1.4"
+<br>
++#ifndef __FPDKSW__
+<br>
++#define __FPDKSW__ "unknown"
+<br>
++#endif
+<br>
+ #define __FPDKHW__ "1.2"
+<br>
+ 
+<br>
+ typedef enum FPDKHWVARIANT
+<br>
+`
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/44906609?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/freepdk" class="user-mention">@freepdk</a> commented on issue
+          <a href="https://github.com/free-pdk/free-pdk-examples/issues/3">free-pdk/free-pdk-examples#3</a>
+          <br>
+          <strong>
+            Still missing LICENSE 
+          </strong>
+          <br>
+          &gt; I can appreciate that you have put a LOT of your own time into the programmer (and supporting documentation, etc...), and don't want someone to just come in and sell everything you have come up with. That certainly makes sense for something like the programmer, but does that really matter for some example code (and include files)?
+<br>
+
+<br>
+You are completely wrong here. I have nothing against anything from the project is sold. 
+<br>
+GPL also does not forbid this. 
+<br>
+The only thing required from GPL, is to include the full source of the original and all modifications.
+<br>
+What other "more permissive" you need / want to grant?
+<br>
+Why remove this simple restriction by choosing PD or MIT?
+<br>
+
+<br>
+&gt; &gt; Why PD or MIT?
+<br>
+&gt; &gt; You want others to be able to use this work and build it into their closed source products?
+<br>
+&gt; &gt; [ ] yes
+<br>
+&gt; &gt; [ ] no
+<br>
+&gt; 
+<br>
+&gt; Sure, why not?
+<br>
+&gt; 
+<br>
+&gt; That is still increased exposure and can still lead to more potential users hunting down bugs and contributing enhancements.
+<br>
+I see it exact the other way. By choosing MIT or PD you might discourage several free opens source developers to contribute new features or bug fixes since there is no way fro them to protect their work from being included in close source products.
+<br>
+
+<br>
+Almost 20 years ago, I had almost the same thinking and released anything under MIT. There was also no argument back then which could have convinced me to use GPL. I learned it the hard way that I was wrong. 
+<br>
+
+<br>
+So for me: sharing = caring, only GPL really ensures sharing.
+        </p>
+      
+    </div>
+    
+  
+</div>
+
+  </div>
+
+</article>
+
+<div class="edit-page">
+  <a href="https://github.com/free-pdk/free-pdk.github.io/edit/production/index.md">
+    Edit this page on GitHub
+  </a>
+</div>
+
+</div>
+
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Free PDK</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Free PDK</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/free-pdk"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">free-pdk</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Free PDK is an effort to create an open source alternative to the proprietary
+Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
